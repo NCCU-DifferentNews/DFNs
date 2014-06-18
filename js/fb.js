@@ -64,13 +64,23 @@ FB.getLoginStatus(function(response) {
     console.log("user is logged in and has authenticated your app");
           $("#mypage").attr("href", "personalpage.html");
          window.location.href="personalpage.html";  
-  }else{
+  }else if (response.status === 'not_authorized') {
+    //要求使用者登入，索取publish_actions權限
         console.log("haha");
         FB.login(function(response) {
                 if (response.authResponse) { 
-                    window.location.hash="login/";
+                    window.location.reload();
                 };
-    }, {scope: "user_likes,user_photos,publish_actions"});    
+    }, {scope: "user_likes,user_photos,publish_actions"});   
+  }else{ 
+       console.log("this isn't logged in to Facebook.");
+            FB.login(function(response) {
+            if (response.authResponse) {
+            window.location.reload();
+          } else {
+            alertify.alert('An Error has Occurs,Please Reload your Pages');
+          }
+      }); 
   }
  });
 });
