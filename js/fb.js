@@ -61,15 +61,16 @@ $("#logout").click(function () {
    document.getElementById("logout").style.display="none";
 });
 $("#mypage").click(function () {
-    
-  if (response.status === 'not_authorized') {
+  FB.getLoginStatus(function(response) {
+    if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
        FB.login(function(response) {
           if (response.authResponse) { 
               window.location.reload();
         };
     }, {scope: "user_likes,user_photos,publish_actions"});   
-  }
+  }}  
+  
    window.location.href="personalpage.html";
 });
 
