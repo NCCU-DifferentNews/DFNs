@@ -11,7 +11,6 @@ window.fbAsyncInit = function () {//facebook init
 
 FB.getLoginStatus(function(response) {
   if (response.status === 'connected') {
-    //呼叫api把圖片放到#preview IMG tag 內
     console.log("user is logged in and has authenticated your app");
     //var uid = response.authResponse.userID;
     //var accessToken = response.authResponse.accessToken;
@@ -51,7 +50,10 @@ $("#login").click(function () {
                 };
     }, {scope: "user_likes,user_photos,publish_actions"});
 });
-
+$("#logout").click(function () {
+   FB.logout();
+   window.location.hash="logout/";
+});
 
 
 $("#mypage").click(function(){
@@ -64,8 +66,7 @@ FB.getLoginStatus(function(response) {
         console.log("haha");
         FB.login(function(response) {
                 if (response.authResponse) { 
-                    
-                    window.location.reload();
+                    window.location.hash="login/";
                 };
     }, {scope: "user_likes,user_photos,publish_actions"});    
   }
