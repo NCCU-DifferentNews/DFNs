@@ -71,11 +71,6 @@
     $('#peopleSound').on('click',function(){handler.classificationFunc('peopleSound');});
     $('#otherSound').on('click',function(){handler.classificationFunc('otherSound');});  
 
-    $('#pageBtn1').on('click',function(){});
-    $('#pageBtn2').on('click',function(){});
-    $('#pageBtn3').on('click',function(){});
-
-
 })();
 
 
