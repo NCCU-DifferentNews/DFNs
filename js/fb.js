@@ -69,7 +69,7 @@ $("#mypage").click(function () {
               window.location.reload();
         };
     }, {scope: "user_likes,user_photos,publish_actions"});   
-  }}  
+  }})  
   
    window.location.href="personalpage.html";
 });
