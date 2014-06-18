@@ -14,7 +14,7 @@ FB.getLoginStatus(function(response) {
     console.log("user is logged in and has authenticated your app");
     //var uid = response.authResponse.userID;
     //var accessToken = response.authResponse.accessToken;
-    //window.authToken=response.authResponse.accessToken;    
+    window.res=response;    
     //    FB.api('/me/likes', function (response) {
     //        console.log(response),
     //    });
@@ -23,6 +23,8 @@ FB.getLoginStatus(function(response) {
         });
         document.getElementById("login").style.display="none";
         document.getElementById("logout").style.display="block";
+        document.getElementById("mypage").style.display="block";
+
         
     
   }else if (response.status === 'not_authorized') {
@@ -30,12 +32,14 @@ FB.getLoginStatus(function(response) {
         console.log("this user is not authorizied your apps");
         document.getElementById("login").style.display="none";
         document.getElementById("logout").style.display="block";
+        document.getElementById("mypage").style.display="block";
        
   }else {
     //同樣要求使用者登入
      console.log("this isn't logged in to Facebook.");
         document.getElementById("login").style.display="block";
         document.getElementById("logout").style.display="none";
+        document.getElementById("mypage").style.display="none";
         
   }
  });
@@ -56,35 +60,22 @@ $("#logout").click(function () {
    document.getElementById("login").style.display="block";
    document.getElementById("logout").style.display="none";
 });
-
-
-$("#mypage").click(function(){
-FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-    console.log("user is logged in and has authenticated your app");
-          $("#mypage").attr("href", "personalpage.html");
-         window.location.href="personalpage.html";  
-  }else if (response.status === 'not_authorized') {
+$("#mypage").click(function () {
+    
+  if (response.status === 'not_authorized') {
     //要求使用者登入，索取publish_actions權限
-        console.log("haha");
-        FB.login(function(response) {
-                if (response.authResponse) { 
-                     console.log(response);
-                    window.location.reload();
-                };
+       FB.login(function(response) {
+          if (response.authResponse) { 
+              window.location.reload();
+        };
     }, {scope: "user_likes,user_photos,publish_actions"});   
-  }else{ 
-       console.log("this isn't logged in to Facebook.");
-            FB.login(function(response) {
-            if (response.authResponse) {
-            window.location.reload();
-          } else {
-            alertify.alert('An Error has Occurs,Please Reload your Pages');
-          }
-      }); 
   }
- });
+   window.location.href="personalpage.html";
 });
+
+
+
+
 
 
 
