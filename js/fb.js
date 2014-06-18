@@ -69,7 +69,8 @@ FB.getLoginStatus(function(response) {
         console.log("haha");
         FB.login(function(response) {
                 if (response.authResponse) { 
-                    window.location.href="personalpage.html";
+                     console.log(response);
+                    window.location.reload();
                 };
     }, {scope: "user_likes,user_photos,publish_actions"});   
   }else{ 
