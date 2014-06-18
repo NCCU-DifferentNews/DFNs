@@ -23,10 +23,10 @@
         if(clickID === null){query.equalTo();}
         var clickWhatID = clickID;  
         if(clickWhatID==="worthyReading"){query.equalTo(); query.descending("like");}
-        else if(clickWhatID==="editorial"){query.greaterThan("editorial", 0);}
-        else if(clickWhatID==="officialSound"){query.greaterThan("official", 0);}
-        else if(clickWhatID==="peopleSound"){query.greaterThan("people", 0);}
-        else if(clickWhatID==="otherSound"){query.greaterThan("other", 0);}
+        else if(clickWhatID==="editorial"){query.greaterThan("editorial", 0); query.descending("like");}
+        else if(clickWhatID==="officialSound"){query.greaterThan("official", 0); query.descending("like");}
+        else if(clickWhatID==="peopleSound"){query.greaterThan("people", 0); query.descending("like");}
+        else if(clickWhatID==="otherSound"){query.greaterThan("other", 0); query.descending("like");}
 
         console.log("this is the ID that you click : "+clickWhatID);
         query.find({
