@@ -52,7 +52,9 @@ $("#login").click(function () {
 });
 $("#logout").click(function () {
    FB.logout();
-   window.location.hash="logout/";
+   window.location.href="index.html";
+   document.getElementById("login").style.display="block";
+   document.getElementById("logout").style.display="none";
 });
 
 
