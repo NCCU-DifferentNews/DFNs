@@ -23,6 +23,7 @@ FB.getLoginStatus(function(response) {
         });
         document.getElementById("login").style.display="none";
         document.getElementById("logout").style.display="block";
+        document.getElementById("mypage").style.display="block";
         
     
   }else if (response.status === 'not_authorized') {
@@ -30,13 +31,13 @@ FB.getLoginStatus(function(response) {
         console.log("this user is not authorizied your apps");
         document.getElementById("login").style.display="none";
         document.getElementById("logout").style.display="block";
-       
+        document.getElementById("mypage").style.display="block";
   }else {
     //同樣要求使用者登入
      console.log("this isn't logged in to Facebook.");
         document.getElementById("login").style.display="block";
         document.getElementById("logout").style.display="none";
-        
+        document.getElementById("mypage").style.display="none";
   }
  });
 };
